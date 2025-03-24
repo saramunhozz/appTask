@@ -28,6 +28,8 @@ export class HomePage {
   tasks: Task[] = []; //Inicia lista de tarefas vazia
   newTask: string = ''; //nova tarefa (valor do campo)
 
+  exibirConcluidos: boolean = true; // Variavel de controle para exibir ou ocultar
+
   addTask() {
     if (this.newTask.trim()) {
 
@@ -64,4 +66,14 @@ export class HomePage {
 
     addIcons({ellipseOutline, checkmarkCircle});
    }
+
+   //função para alternar entre exibir e não exibir
+   mostrarOcultar(){
+    this.exibirConcluidos = !this.exibirConcluidos;
+   }
+
+   get filteredTasks(){
+    return this.tasks.filter((task)=> this.exibirConcluidos || !task.completed)
+   }
+
 }
