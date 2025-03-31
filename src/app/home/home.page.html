@@ -28,7 +28,11 @@
       {{ tarefa.title }}
     </ion-label>
 
-    <ion-button fill="clear" (click)="concluir(tarefa.id)">
+    <ion-button fill = "clear" (click)="deletarTask(tarefa.id)"  color="danger">
+      <ion-icon name="trash"> </ion-icon>
+    </ion-button>
+
+    <ion-button fill="clear" (click)="concluir(tarefa.id)" color="success">
       <ion-icon [name]="tarefa.completed ? 'checkmark-circle':'ellipse-outline'">
 
       </ion-icon>
@@ -39,10 +43,14 @@
 
   </ion-list>
 
-  <ion-button expanded="full" (click)="mostrarOcultar()">
+  <ion-button expand="full" (click)="mostrarOcultar()">
+    <!--Adiciona icone olho no botão -->
+    <ion-icon slot="start" [name]="exibirConcluidos ? 'eye-off':'eye'">    </ion-icon>
+   
+    <!--Altera o texto do botão conforme a variavel exibirConcluidos -->
     
-    Mostrar/Ocultar
-
+    {{ exibirConcluidos ? 'Ocultar Concluidos': 'Mostrar Concluidos' }}
+  
   </ion-button>
 
 

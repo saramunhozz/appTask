@@ -9,7 +9,7 @@ import { addIcons } from 'ionicons';
 
 //Importar o icone
 
-import {ellipseOutline,checkmarkCircle } from 'ionicons/icons'
+import {ellipseOutline,checkmarkCircle, eye, eyeOff, trash } from 'ionicons/icons'
 
 //Interfaca para criar um "objeto" com nossa tarefa
 interface Task {
@@ -41,6 +41,7 @@ export class HomePage {
       this.tasks.push(newTaskObj);
 
       this.newTask = '';
+      
     }
 
 
@@ -61,10 +62,14 @@ export class HomePage {
 
   }
 
+  deletarTask(id:number){
+    this.tasks= this.tasks.filter((task)=>task.id !==id);
+  }
+
 
   constructor() {
 
-    addIcons({ellipseOutline, checkmarkCircle});
+    addIcons({ellipseOutline, checkmarkCircle, eye, eyeOff, trash});
    }
 
    //função para alternar entre exibir e não exibir
